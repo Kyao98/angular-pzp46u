@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'my-app',
@@ -7,22 +7,27 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  checkoutForm = this.formBuilder.group({
-    first: '',
-    last: '',
-    email:''
-  });
+  formdata;
+  first;
+  last;
 
   constructor(
-    private formBuilder: FormBuilder,
   ) {}
 
-  onSubmit(): void {
-    console.warn('Hi',this.checkoutForm.value);
-    this.checkoutForm.reset();
+  ngOnInit() {
+    this.formdata = new FormGroup({
+        first: new FormControl(""),
+        last: new FormControl(""),
+        email: new FormControl("")
+      });
+  }
+
+  onClickSubmit(data): void {
+    this.first = data.first;
+    this.last = data.last;
   }
 
   onClear(): void {
-    this.checkoutForm.reset();
+    this.formdata.reset();
   }
 }

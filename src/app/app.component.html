@@ -1,4 +1,4 @@
-<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
   <div>
     <h3>Full Name</h3>
   </div>
@@ -9,7 +9,7 @@
     <label for="last" style="margin-left:126px">Last Name</label>
   </div><br><br><br>
   <div>
-  <h3>Email</h3>
+    <h3>Email</h3>
   </div>
   <div>
     <input id="email" type="text" id="email" formControlName="email"><br>
@@ -20,4 +20,6 @@
     <button class="button" type="submit" (click)="onClear()" style="margin-left:20px">Clear Form</button>
   </div>
 </form>
+
+<p>{{first}} {{last}}</p>
 
